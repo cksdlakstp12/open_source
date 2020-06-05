@@ -12,15 +12,7 @@ body {
 body.detail {
     margin-top: 60px;
 }
-body.joonsik {
-    background: url(./assets/bg/umbg.jpg) center/cover no-repeat fixed;
-}
-body.sibal {
-    background: url(./assets/bg/sibalbg.jpg) center/cover no-repeat fixed;
-}
-body.trump {
-    background: url(./assets/bg/trumpbg.jpg) center/cover no-repeat fixed;
-}
+
 a {
     color: #fff;
 }
@@ -207,4 +199,11 @@ div#is-limited-num {
 #is-limited-num input[type=number] {
     height: 10px;
     width: 50px;
+}
+#supersecret-document {
+    display: none;
+    margin: 0;
+}
+#supersecret-input {
+    width: 15px;
 }
