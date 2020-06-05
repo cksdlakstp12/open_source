@@ -22,7 +22,7 @@ isLimitedNumInput.onchange = function () {
 
 
 function umfinder (value) {
-  if (value === '엄') {document.getElementById('supersecret-document').style.display = 'block'}
+  if (value === '엄' || value === '응') {document.getElementById('supersecret-document').style.display = 'block'}
 }
 
 function joonsikfinder (value) { 
@@ -30,12 +30,13 @@ function joonsikfinder (value) {
   var bodyEle = document.getElementsByTagName('body')[0]
   var titleIdentifiers = document.getElementsByClassName('title-identifier')
   if (value === '엄준식') {
-    bodyEle.className = ''	
-    //bodyEle.classList.add('joonsik')	
+    bodyEle.className = ''
     titleIdentifiers[0].innerHTML = '엄준식'	
     titleIdentifiers[1].innerHTML = '엄준식을'
-  } else if (value === '박원순') {
-  } else if (value === '트럼프') {
+  } else if (value === '김응삼') {
+    bodyEle.className = ''	
+    titleIdentifiers[0].innerHTML = '김응삼'	
+    titleIdentifiers[1].innerHTML = '김응삼을'
   } else {
     bodyEle.className = ''
     titleIdentifiers[0].innerHTML = '악질 이름'
