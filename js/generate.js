@@ -4,20 +4,20 @@ for (i=0; i<jobs.length; i++) {
   totalJob = totalJob.concat(jobs[i])
 }
 
-function generate (varName, varLocation, targetID) {
+function generate (varName, targetID) {
   if (isLimitedCheckbox.checked && isLimitedNumInput.value >= 12) {
     result = 'N'.repeat(isLimitedNumInput.value + 2)
     while (result.length > isLimitedNumInput.value) {
-      result = generateResult(varName, varLocation)
+      result = generateResult(varName)
     }
   } else {
-    result = generateResult(varName, varLocation)
+    result = generateResult(varName)
   }
   
   document.getElementById(targetID).innerHTML = result
 }
 
-function generateResult (varName, varLocation) {
+function generateResult (varName) {
   var result = ''
 
   if (Math.random() < 0.8) { /* 일반 장소 처리 */
@@ -46,18 +46,16 @@ function generateResult (varName, varLocation) {
     // 특별한 문장 정의 완료
 
     if (jobs[0].indexOf(randomDetailJob) >= 0) {
-      result = generateSpecificCase(1, [varLocation, randomDetailLocation, randomDetailJob, varName])
+      result = generateSpecificCase(1, [randomDetailLocation, randomDetailJob, varName])
     } else if (jobs[1].indexOf(randomDetailJob) >= 0) {
-      result = generateSpecificCase(2, [varLocation, randomDetailLocation, randomDetailJob, varName])
+      result = generateSpecificCase(2, [randomDetailLocation, randomDetailJob, varName])
     }
   } else { /* 특별한 위치 변수 정의 처리 */
     var randomDetailLocation = locations[1][Math.floor(Math.random() * locations[1].length)]
     // 여기서 문제가 발생한다면 특별한 위치 변수를 제대로 정의하지 않은것.
     // debug: console.log('specificLocations', specificLocations[randomDetailLocation], randomDetailLocation)
     if (specificLocations[randomDetailLocation][1]) {
-      result = generateSpecificCase(2, [varLocation, randomDetailLocation, specificLocations[randomDetailLocation][0], varName])
-    } else {
-      result = generateSpecificCase(3, [varLocation, randomDetailLocation, specificLocations[randomDetailLocation][0], varName])
+      result = generateSpecificCase(2, [randomDetailLocation, specificLocations[randomDetailLocation][0], varName])
     }
   }
   //debug: console.log(randomDetailLocation, randomDetailJob, result)
@@ -65,54 +63,37 @@ function generateResult (varName, varLocation) {
   return result
 }
 
-/* params = [varLocation, randomDetailLocation, randomDetailJob, varName] */
+/* params = [randomDetailLocation, randomDetailJob, varName] */
 function generateSpecificCase (caseCode, params) {
   if (caseCode === 1) {
     var randomObject = objects[Math.floor(Math.random() * objects.length)]
 
-    // 특별한 문장 정의
-    if (params[1] === '산채비빔밥먹는스님앞에서') {
-      return params[1] + randomObject + '먹는' + params[3]
-    }
-    if (params[2] === '교제사실을들킨'){
-      return params[0] + params[1] + josa.r(randomObject, '와/과') + params[2] + params[3]
-    }
-    // 특별한 문장 정의 완료
+    // // 특별한 문장 정의
+    // if (params[1] === '산채비빔밥먹는스님앞에서') {
+    //   return params[1] + randomObject + '먹는' + params[3]
+    // }
+    // if (params[2] === '교제사실을들킨'){
+    //   return params[0] + josa.r(randomObject, '와/과') + params[1] + params[2]
+    // }
+    // // 특별한 문장 정의 완료
 
-    return params[0] + params[1] + randomObject + params[2] + params[3]
+    return params[0] + randomObject + params[1] + params[2]
   } else if (caseCode === 2) {
 
-    // 특별한 문장 정의
-    if (params[1] === '납골당') {
-      params[2] = ['유골항아리도둑', '유골항아리파괴자'][Math.floor(Math.random() * 2)]
-    }
-    // 특별한 문장 정의 완료
+    // // 특별한 문장 정의
+    // if (params[0] === '납골당') {
+    //   params[1] = ['유골항아리도둑', '유골항아리파괴자'][Math.floor(Math.random() * 2)]
+    // }
+    // // 특별한 문장 정의 완료
 
-    return params[0] + params[1] + params[2] + params[3]
-  } else if (caseCode === 3) {
-
-    // 특별한 문장 정의
-    if (params[1] === '틀니') {
-      params[1] = (Math.floor(Math.random() * 11)+1) + '주' + params[1]
-    }
-    // 특별한 문장 정의 완료
-
-    if (params[0] === '' || Math.floor(Math.random() * 2) === 0) {
-      return params[1] + params[2] + params[3]
-    } else {
-      if (Math.floor(Math.random() * 2) === 0) {
-        return params[1] + params[2] + params[0] + '의아들' + params[3]
-      } else {
-        return params[1] + params[2] + params[0] + '의딸' + params[3]
-      }
-    }
+    return params[0] + params[1] + params[2]
   } else {
     return undefined
   }
 }
 
-function debug (a, b, c) {
+function debug (a, b) {
   for (i=0; i<100; i++) {
-    generate(a, b, c)
+    generate(a, b)
   }
 }
