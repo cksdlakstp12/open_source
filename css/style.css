@@ -134,7 +134,14 @@ hr {
     background-color: #8d8d8d;
     border: 0px solid;
 }
-.github-wrapper {
+.github-wrapper1 {
+    position: fixed;
+    z-index: 5;
+    background-color: rgb(56, 56, 56);
+    right: 25px;
+    bottom: 80px;
+}
+.github-wrapper2 {
     position: fixed;
     z-index: 5;
     background-color: rgb(56, 56, 56);
@@ -207,3 +214,7 @@ div#is-limited-num {
 #supersecret-input {
     width: 15px;
 }
+#chartdiv {
+    width: 100%;
+    height: 500px;
+  }
