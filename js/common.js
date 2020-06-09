@@ -33,10 +33,10 @@ function joonsikfinder (value) {
     bodyEle.className = ''
     titleIdentifiers[0].innerHTML = '엄준식'	
     titleIdentifiers[1].innerHTML = '엄준식을'
-  } else if (value === '김응삼') {
+  } else if (value === '손진웅') {
     bodyEle.className = ''	
-    titleIdentifiers[0].innerHTML = '김응삼'	
-    titleIdentifiers[1].innerHTML = '김응삼을'
+    titleIdentifiers[0].innerHTML = '손진웅'	
+    titleIdentifiers[1].innerHTML = '손진웅을'
   } else {
     bodyEle.className = ''
     titleIdentifiers[0].innerHTML = '악질 이름'
