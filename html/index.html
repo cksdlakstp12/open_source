@@ -67,9 +67,7 @@
     <script>
         setInterval(function () {
           var exampleName = exampleNames[Math.floor(Math.random() * exampleNames.length)]
-          var exampleLocation = exampleLocations[Math.floor(Math.random() * exampleLocations.length)]
-          generate(exampleName, exampleLocation, 'example-result')
-          document.getElementById('example-location').innerHTML = exampleLocation
+          generate(exampleName, 'example-result')
           document.getElementById('example-name').innerHTML = exampleName
         }, 5000)
     </script>
