@@ -32,14 +32,15 @@
     <div class="container">
         <div class="hero">
             <h1>악질 직업 생성기</h1>
-            <p><img class="badge" src="https://img.shields.io/badge/lunch-prepared--by--mother-lightgrey" alt=""> | <a href="https://github.com/kpjhg0124/prefix-generator" target="_blank">원작자님의 Github</a> | <a href="https://github.com/cksdlakstp12/open_source" target="_blank">본 제작자의 Github</a> | <a href="http://khuhub.khu.ac.kr/2019102216/opensource_term_project/issues" target="_blank">이슈트래커</a></p>
+            <p><img class="badge" src="https://img.shields.io/badge/lunch-prepared--by--mother-lightgrey" alt=""> | <a href="https://asked.kr/cksdlakstp12" target="_blank">질문 or 문의하는 곳</a> | <a href="https://github.com/cksdlakstp12/open_source" target="_blank">본 제작자의 Github</a> | <a href="http://khuhub.khu.ac.kr/2019102216/opensource_term_project/issues" target="_blank">이슈트래커</a></p>
             <p><i>우리는 "엄"과 "응"의 시대에 살고 있습니다.</i></p>
         </div>
     </div>
     <div class="container">
         <h2>이건 대체 뭔가요?</h2>
         <p>최근 유행하고 있는 악질 이름 드립을 변형하여 직업에 연관시킨 악질 직업 드립을 효과적으로 만들어주는 생성기입니다.</p>
-        <a href="https://name.ho9.me/">원작 : 악질 이름 생성기로 바로가기</a>
+        <p>원작 악질 이름 생성기로 바로가기 → <a href="https://name.ho9.me/">https://name.ho9.me/</a></p>
+        <p>원작자님의 Github 주소 → <a href="https://github.com/kpjhg0124/prefix-generator" target="_blank">https://github.com/kpjhg0124/prefix-generator</a></p>
     </div>
     <div class="container">
         <h2>악질 직업 드립은 뭔가요?</h2>
@@ -53,6 +54,10 @@
     <div class="container">
         <h2>혹시 광고 달 계획 있나요?</h2>
         <p>원작인 악질 이름 생성기의 제작자님의 정신을 이어받아 광고는 일절 받지 않을 계획입니다.</p>
+    </div>
+    <div class="container">
+        <h2>기발한 아이더아 가 떠올랐는데 어디에서 문의 혹은 질문할 수 있나요?</h2>
+        <p>이곳으로 질문 또는 문의하시면 됩니다. → <a href="https://asked.kr/cksdlakstp12" target="_blank">https://asked.kr/cksdlakstp12</a></p>
     </div>
     <div class="container">
         <h2>예시에 나오는 사람은 누구인가요?</h2>
@@ -80,10 +85,10 @@
                 <li><a href="https://www.youtube.com/watch?v=fBkEVlV5LF8" target="_blank">JTBC 엄준식 화이팅!</a>의 댓글들</li>
                 <li><a href="https://www.youtube.com/watch?v=9BQ4Xc2tx1o" target="_blank">엄준식 추모 영상</a>의 댓글들</li>
                 <li><a href="https://talk.op.gg/s/lol/free/2096057/%EC%95%85%EC%A7%88-%EC%97%84%EC%A4%80%EC%8B%9D-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%AA%A8%EC%9D%8C" target="_blank">악질 엄준식 닉네임 모음 - OP.GG Talk</a></li>
-                <li><a href="https://youtu.be/d8352zsZvbI" target="_blank">김응삼 인성질에 패배한 살인마 모음</a>의 댓글들</li>
+                <li><a href="https://youtu.be/d8352zsZvbI" target="_blank">응삼이 인성질에 패배한 살인마 모음</a>의 댓글들</li>
                 <li>악질 이름 생성기 에스크 사용자</li>
             </ul>
-            <p>...and 전국 각지에 계신 유튜브 사용자 엄준식씨, 언제나 준구만 보면 흥분하는 김응삼씨</p>
+            <p>...and 전국 각지에 계신 유튜브 사용자 엄준식씨, 언제나 준구만 보면 흥분하는 손진웅씨</p>
             <p>이 사이트는 하나의 필터없이 대학 과제로 제출하였습니다.</p>
             <div class="youtube-profile-wrapper">
                 <div class="youtube-profile-img" id="youtube-profile-img"></div><div class="youtube-profile-name" id="youtube-profile-name">동탄사우나수건도둑엄준식</div>
@@ -102,8 +107,7 @@
         setInterval(function () {
           var theirName = ['엄준식', '김응삼']
           var exampleName = theirName[Math.floor(Math.random() * theirName.length)]
-          var exampleLocation = exampleLocations[Math.floor(Math.random() * exampleLocations.length)]
-          generate(exampleName, exampleLocation, 'youtube-profile-name')
+          generate(exampleName, 'youtube-profile-name')
           document.getElementById('youtube-profile-img').style.backgroundColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
         }, 5000)
     </script>
