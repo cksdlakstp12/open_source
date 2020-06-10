@@ -20,13 +20,13 @@ isLimitedNumInput.onchange = function () {
   }
 }
 
+// 이 밑은 돌아올 수 없는 강입니다. 그래도 보시겠습니까?
 
 function umfinder (value) {
   if (value === '엄' || value === '응') {document.getElementById('supersecret-document').style.display = 'block'}
 }
 
 function joonsikfinder (value) { 
-  // 이걸 보고 있는 넌 너무 많은걸 알아버렸어
   var bodyEle = document.getElementsByTagName('body')[0]
   var titleIdentifiers = document.getElementsByClassName('title-identifier')
   if (value === '엄준식') {
@@ -39,8 +39,8 @@ function joonsikfinder (value) {
     titleIdentifiers[1].innerHTML = '손진웅을'
   } else {
     bodyEle.className = ''
-    titleIdentifiers[0].innerHTML = '악질 이름'
-    titleIdentifiers[1].innerHTML = '악질 이름을'
+    titleIdentifiers[0].innerHTML = '악질 직업'
+    titleIdentifiers[1].innerHTML = '악질 직업을'
   }
 }
 
