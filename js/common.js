@@ -35,8 +35,8 @@ function joonsikfinder (value) {
     titleIdentifiers[1].innerHTML = '엄준식을'
   } else if (value === '손진웅') {
     bodyEle.className = ''	
-    titleIdentifiers[0].innerHTML = '손진웅'	
-    titleIdentifiers[1].innerHTML = '손진웅을'
+    titleIdentifiers[0].innerHTML = '응삼이'	
+    titleIdentifiers[1].innerHTML = '응삼이를'
   } else {
     bodyEle.className = ''
     titleIdentifiers[0].innerHTML = '악질 직업'
