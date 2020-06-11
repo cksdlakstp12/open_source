@@ -32,6 +32,16 @@ function generateResult(varName) {
     var randomDetailBehavior = totalBehavior[Math.floor(Math.random() * totalBehavior.length)]
     // debug: console.log(randomDetailLocation, randomDetailBehavior, randomDetailJob)
 
+
+    // 조사가 필요한 특별한 경우 정의
+    if(randomDetailBehavior === '만흥분하는'){
+      var randomObject = objects[Math.floor(Math.random() * objects.length)]
+      return randomDetailLocation + randomObject + josa.r(randomObject, '으로/로') + randomDetailBehavior + randomDetailJob
+    } else if(randomDetailBehavior === '선물받고좋아하는'){
+      var randomObject = objects[Math.floor(Math.random() * objects.length)]
+      return randomDetailLocation + randomObject + josa.r(randomObject, '을/를') + randomDetailBehavior + randomDetailJob
+    }
+
     if (behaviors[0].indexOf(randomDetailBehavior) >= 0) {
       result = generateSpecificCase(1, [randomDetailLocation, randomDetailBehavior, randomDetailJob, varName])
     } else if (behaviors[1].indexOf(randomDetailBehavior) >= 0) {
