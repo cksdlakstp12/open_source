@@ -34,10 +34,7 @@ function generateResult(varName) {
 
 
     // 조사가 필요한 특별한 경우 정의
-    if(randomDetailBehavior === '만흥분하는'){
-      var randomObject = objects[Math.floor(Math.random() * objects.length)]
-      return randomDetailLocation + josa.r(randomObject, '으로/로') + randomDetailBehavior + randomDetailJob + varName
-    } else if(randomDetailBehavior === '선물받고좋아하는'){
+    if(randomDetailBehavior === '선물받고좋아하는'){
       var randomObject = objects[Math.floor(Math.random() * objects.length)]
       return randomDetailLocation + josa.r(randomObject, '을/를') + randomDetailBehavior + randomDetailJob + varName
     }
