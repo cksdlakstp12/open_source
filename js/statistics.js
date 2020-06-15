@@ -1,3 +1,16 @@
+var date = new Date();
+
+function addZeroMonth(date) {
+    if ((date + 1) < 10) return `0${date + 1}`;
+    else return `${date + 1}`;
+}
+
+function addZeroDate(date) {
+    if (date < 10) return `0${date}`;
+    else return `${date}`;
+}
+
+
 am4core.ready(async function () {
     
     fetch('/api/visiters')
@@ -9,12 +22,12 @@ am4core.ready(async function () {
 
 			for (var i = 0; i < myJson.length; i++) {
 				const temp = {
-					"date": myJson[i].date,
+					"date": `${myJson[i].year}-${addZeroMonth(myJson[i].month)}-${addZeroDate(myJson[i].day)}`,
 					"value": myJson[i].numOfVisiters
 				};
 				data.push(temp);
             }
-
+			console.log(data);
             // Create chart instance
             var chart = am4core.create("chartdiv", am4charts.XYChart);
 

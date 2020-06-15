@@ -43,39 +43,16 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-let DBdata = [];
-
-function addZeroMonth(date) {
-    if ((date.getMonth() + 1) < 10) return `0${date.getMonth() + 1}`;
-    else return `${date.getMonth() + 1}`;
-}
-
-function addZeroDate(date) {
-    if (date.getDate() < 10) return `0${date.getDate()}`;
-    else return `${date.getDate()}`;
+async function DBUpdate() {
+    await connection.query(
+        `INSERT INTO visiter VALUES (${date.getFullYear()}, ${date.getMonth()},${date.getDate()}, ${count});`
+    );
+    count = await 0;
 }
 
 var date = new Date();
-function server_time() {
-    date.setSeconds(date.getSeconds() + 1);
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var seconds = date.getSeconds();
-    if (hours < 10) {
-        hours = "0" + hours;
-    }
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-    console.log(hours + ":" + minutes + ":" + seconds);
-}
 
 app.get('/', (req, res) => {
-    var date = new Date();
-    var dateString = `${date.getFullYear()}-${addZeroMonth(date)}-${addZeroDate(date)}`;
     var today = date.getYear() + " " + date.getMonth() + " " + date.getDate();
 
     setInterval(() => {
@@ -83,14 +60,8 @@ app.get('/', (req, res) => {
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
-        console.log(hours + ":" + minutes + ":" + seconds);
         if (hours === 23 && minutes === 59 && seconds === 59) {
-            //수정해야하는 DB 푸쉬
-            DBdata.push({
-                "date": dateString,
-                "value": count
-            });
-            count = 0;
+            DBUpdate();
         }
     }, 1000);
     console.log(req.session.lastVisit);
@@ -112,6 +83,7 @@ app.get('/detail.html', (req, res) => {
         res.end(data);
     });
 });
+
 app.get('/api/visiters', (req,res)=>{
     connection.query(
         'SELECT * FROM  visiter',
@@ -123,7 +95,6 @@ app.get('/api/visiters', (req,res)=>{
 
 
 app.get('/statistics.html', (req, res) => {
-    
     fs.readFile(path.join(__dirname, 'html', 'statistics.html'), (err, data) => {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(data);
