@@ -7,7 +7,6 @@ const app = express();
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const mysql = require('mysql');
-const domain = "www.randomjob.tk"
 const sslport = 443;
 var cookieSession = require('cookie-session')
 
