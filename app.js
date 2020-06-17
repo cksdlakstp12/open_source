@@ -1,13 +1,14 @@
 const fs = require('fs');
-const http = require('http');
+const https = require('https');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 5000;
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const mysql = require('mysql');
+const domain = "www.randomjob.tk"
+const sslport = 443;
 var cookieSession = require('cookie-session')
 
 app.use(bodyParser.json());
@@ -100,5 +101,17 @@ app.get('/statistics.html', (req, res) => {
         res.end(data);
     })
 })
+try {
+    const options = {
+        key: fs.readFileSync('./keys/private.pem'),
+        cert: fs.readFileSync('./keys/public.pem')
+    };
+  
+    https.createServer(options, app).listen(sslport, sslport, () => {
+        console.log(`[HTTPS] Server is started on port ${sslport}`);
+      });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+  } catch (error) {
+    console.log('[HTTPS] HTTPS 오류가 발생하였습니다. HTTPS 서버는 실행되지 않습니다.');
+    console.log(error);
+  }
