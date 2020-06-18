@@ -7,7 +7,7 @@ const app = express();
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const mysql = require('mysql');
-const sslport = 443;
+const sslport = 23023;
 var cookieSession = require('cookie-session')
 
 app.use(bodyParser.json());
@@ -43,7 +43,8 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-async function DBUpdate() {
+async function DBUpdate(year, month, day) {
+    await console.log(yaer + " " + month + " " + day);
     await connection.query(
         `INSERT INTO visiter VALUES (${date.getFullYear()}, ${date.getMonth()},${date.getDate()}, ${count});`
     );
@@ -53,15 +54,19 @@ async function DBUpdate() {
 var date = new Date();
 
 app.get('/', (req, res) => {
-    var today = date.getYear() + " " + date.getMonth() + " " + date.getDate();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+    var today = year + " " + month + " " + day;
 
     setInterval(() => {
         date.setSeconds(date.getSeconds() + 1);
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
+        console.log(`${hours}:${minutes}:${seconds}`);
         if (hours === 23 && minutes === 59 && seconds === 59) {
-            DBUpdate();
+            DBUpdate(year, month, day);
         }
     }, 1000);
     console.log(req.session.lastVisit);
@@ -84,7 +89,7 @@ app.get('/detail.html', (req, res) => {
     });
 });
 
-app.get('/api/visiters', (req,res)=>{
+app.get('/api/visiters', (req, res) => {
     connection.query(
         'SELECT * FROM  visiter',
         (err, rows, fields) => {
@@ -100,12 +105,18 @@ app.get('/statistics.html', (req, res) => {
         res.end(data);
     })
 })
+
+app.listen(sslport, () => {
+    console.log(`https server listening on port ${sslport}`)
+})
+
+/*
 try {
     const options = {
         key: fs.readFileSync('./keys/private.pem'),
         cert: fs.readFileSync('./keys/public.pem')
     };
-  
+
     https.createServer(options, app).listen(sslport, sslport, () => {
         console.log(`[HTTPS] Server is started on port ${sslport}`);
       });
@@ -114,3 +125,4 @@ try {
     console.log('[HTTPS] HTTPS 오류가 발생하였습니다. HTTPS 서버는 실행되지 않습니다.');
     console.log(error);
   }
+*/
